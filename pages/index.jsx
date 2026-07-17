@@ -142,8 +142,11 @@ export default function Home() {
         />
       </Head>
 
-      <main id="top" className="min-h-screen bg-slate-50 text-slate-800">
-        <header className="sticky top-0 z-20 border-b border-white/30 bg-white/80 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
+      <main
+        id="top"
+        className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.12),_transparent_35%),linear-gradient(135deg,_#f8fffc_0%,_#f1f5f9_100%)] text-slate-800"
+      >
+        <header className="sticky top-0 z-20 border-b border-emerald-100/80 bg-white/80 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
             <a href="#top" className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-linear-to-br from-emerald-500 to-teal-600 text-lg font-black text-white shadow-lg shadow-emerald-500/30">
@@ -196,22 +199,23 @@ export default function Home() {
         </header>
 
         <section className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 lg:px-8 lg:py-10">
-          <div className="grid items-center gap-6 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 lg:grid-cols-[1.2fr_0.8fr] lg:p-8">
-            <div>
+          <div className="grid items-center gap-6 overflow-hidden rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] ring-1 ring-slate-200 lg:grid-cols-[1.15fr_0.85fr] lg:p-8">
+            <div className="relative">
+              <div className="absolute inset-0 -z-10 rounded-full bg-emerald-100/70 blur-3xl" />
               <p className="mb-3 inline-flex rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">
                 Professional klinika xizmati
               </p>
-              <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
+              <h1 className="text-3xl font-black leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 Tez, xavfsiz va ishonchli tibbiy yordam.
               </h1>
-              <p className="mt-3 max-w-2xl text-base text-slate-600">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
                 Yurak, nafas, bola salomatligi, ortopediya, ginekologiya va
                 nevrologiya bo‘yicha mutaxassislar xizmat ko‘rsatadi.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#doctors"
-                  className="rounded-full bg-emerald-600 px-5 py-3 font-semibold text-white transition hover:bg-emerald-700"
+                  className="rounded-full bg-emerald-600 px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700"
                 >
                   Shifokorlar bilan tanishish
                 </a>
@@ -224,31 +228,39 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-slate-900 p-6 text-white">
-              <h2 className="text-lg font-semibold">Bizning xizmatlar</h2>
-              <ul className="mt-3 space-y-2 text-sm text-slate-300">
+            <div className="rounded-[28px] bg-slate-900 p-6 text-white shadow-2xl shadow-slate-900/20">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold">Bizning xizmatlar</h2>
+                <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">
+                  24/7
+                </span>
+              </div>
+              <ul className="mt-4 space-y-3 text-sm text-slate-300">
                 {services.map((item) => (
-                  <li key={item} className="flex items-center gap-2">
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2"
+                  >
                     <span className="text-emerald-400">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 rounded-xl bg-white/10 p-3">
+              <div className="mt-5 rounded-2xl border border-white/10 bg-white/10 p-4">
                 <p className="text-sm text-slate-300">Birinchi konsultatsiya</p>
                 <p className="text-2xl font-bold">150 000 so‘m</p>
               </div>
             </div>
           </div>
 
-          <section className="grid gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-3">
+          <section className="grid gap-3 rounded-[28px] border border-slate-200 bg-white/90 p-4 shadow-sm backdrop-blur md:grid-cols-3">
             <button
               type="button"
               onClick={() => setActiveSpecialty("all")}
               className={`rounded-2xl p-4 text-center text-sm font-semibold transition ${
                 activeSpecialty === "all"
-                  ? "bg-emerald-600 text-white"
-                  : "bg-slate-50 text-slate-800"
+                  ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/20"
+                  : "bg-slate-50 text-slate-800 hover:bg-emerald-50"
               }`}
             >
               Barcha mutaxassislar
@@ -260,8 +272,8 @@ export default function Home() {
                 onClick={() => setActiveSpecialty(item.key)}
                 className={`rounded-2xl p-4 text-center text-sm font-semibold transition ${
                   activeSpecialty === item.key
-                    ? "bg-emerald-600 text-white"
-                    : "bg-slate-50 text-slate-800"
+                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/20"
+                    : "bg-slate-50 text-slate-800 hover:bg-emerald-50"
                 }`}
               >
                 {item.title}
@@ -273,7 +285,7 @@ export default function Home() {
             id="doctors"
             className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]"
           >
-            <div className="rounded-3xl bg-emerald-600 p-6 text-white shadow-sm">
+            <div className="rounded-[32px] bg-gradient-to-br from-emerald-600 via-emerald-500 to-teal-600 p-6 text-white shadow-[0_20px_60px_rgba(16,185,129,0.22)]">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-100">
                 Mutaxassislar jamoasi
               </p>
@@ -296,7 +308,7 @@ export default function Home() {
                 filteredDoctors.map((doctor) => (
                   <article
                     key={doctor.name}
-                    className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm"
+                    className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
                     <div className="flex flex-col gap-3">
                       <div>
@@ -327,7 +339,7 @@ export default function Home() {
 
           <section
             id="about"
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm"
           >
             <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <div>
@@ -346,7 +358,7 @@ export default function Home() {
                   mutaxassislar ishlaydi.
                 </p>
               </div>
-              <div className="rounded-2xl bg-linear-to-br from-emerald-600 to-teal-600 p-6 text-white shadow-lg">
+              <div className="rounded-[24px] bg-linear-to-br from-emerald-600 to-teal-600 p-6 text-white shadow-lg">
                 <h3 className="text-lg font-semibold">Nega bizni tanlaysiz?</h3>
                 <ul className="mt-4 space-y-3 text-sm text-emerald-50">
                   <li>• 24/7 maslahat va tezkor yozilish imkoniyati</li>
@@ -360,7 +372,7 @@ export default function Home() {
 
           <section
             id="booking"
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm"
           >
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
@@ -376,7 +388,7 @@ export default function Home() {
                 </p>
               </div>
               <form
-                className="grid gap-3 rounded-2xl bg-slate-50 p-4"
+                className="grid gap-3 rounded-[24px] bg-slate-50 p-4"
                 onSubmit={handleSubmit}
               >
                 <input
@@ -437,7 +449,7 @@ export default function Home() {
 
           <section
             id="contact"
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm"
           >
             <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr]">
               <div>
@@ -452,7 +464,7 @@ export default function Home() {
                   08:00 dan 20:00 gacha.
                 </p>
               </div>
-              <div className="rounded-2xl bg-slate-900 p-6 text-white">
+              <div className="rounded-[24px] bg-slate-900 p-6 text-white shadow-lg shadow-slate-900/20">
                 <p className="text-sm text-slate-300">Telefon</p>
                 <a
                   href="tel:+998901112233"
