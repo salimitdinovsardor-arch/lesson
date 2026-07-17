@@ -59,26 +59,32 @@ const specialties = [
   {
     title: "Yurak va qon tomir kasalliklari",
     key: "cardio",
+    diseases: ["Yurak urishi", "Bosim", "Qon aylanish muammolari"],
   },
   {
     title: "Bolalar salomatligi",
     key: "pediatrics",
+    diseases: ["Isitma", "Nafas olish muammolari", "O‘sish monitoringi"],
   },
   {
     title: "Ortopediya va travmatologiya",
     key: "ortho",
+    diseases: ["Bo‘g‘im og‘rig‘i", "Suyak singan", "Mushak jarohati"],
   },
   {
     title: "Ayollar salomatligi",
     key: "gynecology",
+    diseases: ["Reproduktiv muammolar", "Ayollar salomatligi", "Profilaktika"],
   },
   {
     title: "Nevrologiya",
     key: "neurology",
+    diseases: ["Bosh og‘rig‘i", "Asab tizimi muammolari", "Xavotir holatlari"],
   },
   {
     title: "Umumiy terapiya",
     key: "therapy",
+    diseases: ["Yengil kasalliklar", "Isitma", "Qorin og‘rig‘i"],
   },
 ];
 
@@ -293,10 +299,35 @@ export default function Home() {
                 Har bir kasallik uchun tegishli davolash yo‘li.
               </h2>
               <p className="mt-3 text-sm text-emerald-50">
-                Bizda kasallikning dastlabki belgilari, og‘riqlar, yurak, nafas,
-                suyak, ayollar salomatligi va asab tizimi muammolarini aniqlash
-                uchun yuqori malakali shifokorlar mavjud.
+                Quyidagi kasallik turlariga mos mutaxassislar mavjud. Ularni
+                tanlang va kerakli doktorni ko‘ring.
               </p>
+
+              <div className="mt-5 rounded-2xl border border-white/20 bg-white/10 p-4">
+                <p className="text-sm font-semibold text-emerald-100">
+                  Tanlangan bo‘lim:
+                </p>
+                <p className="mt-1 text-lg font-semibold">
+                  {activeSpecialty === "all"
+                    ? "Barcha mutaxassislar"
+                    : specialties.find((item) => item.key === activeSpecialty)
+                        ?.title || "Barcha mutaxassislar"}
+                </p>
+                {activeSpecialty !== "all" ? (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {specialties
+                      .find((item) => item.key === activeSpecialty)
+                      ?.diseases.map((disease) => (
+                        <span
+                          key={disease}
+                          className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium"
+                        >
+                          {disease}
+                        </span>
+                      ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
 
             <div className="grid gap-3 md:grid-cols-2">
