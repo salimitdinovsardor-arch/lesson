@@ -93,6 +93,13 @@ const specialtyMap = {
 
 export default function Home() {
   const [activeSpecialty, setActiveSpecialty] = useState("all");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    doctor: "",
+    note: "",
+  });
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const filteredDoctors = useMemo(() => {
     if (activeSpecialty === "all") return doctors;
@@ -100,6 +107,30 @@ export default function Home() {
       specialtyMap[activeSpecialty]?.includes(doctor.specialty),
     );
   }, [activeSpecialty]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (
+      !formData.name.trim() ||
+      !formData.phone.trim() ||
+      !formData.doctor.trim() ||
+      !formData.note.trim()
+    ) {
+      setSubmitMessage("Iltimos, barcha maydonlarni to‘ldiring.");
+      return;
+    }
+
+    setSubmitMessage(
+      `Rahmat, ${formData.name}! Ma'lumotlaringiz qabul qilindi. Tez orada siz bilan bog'lanamiz.`,
+    );
+    setFormData({ name: "", phone: "", doctor: "", note: "" });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
 
   return (
     <>
@@ -111,10 +142,10 @@ export default function Home() {
         />
       </Head>
 
-      <main className="min-h-screen bg-slate-50 text-slate-800">
+      <main id="top" className="min-h-screen bg-slate-50 text-slate-800">
         <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-            <a href="#" className="text-xl font-bold text-emerald-700">
+            <a href="#top" className="text-xl font-bold text-emerald-700">
               Klinika
             </a>
             <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
@@ -224,34 +255,40 @@ export default function Home() {
             </div>
 
             <div className="grid gap-3 md:grid-cols-2">
-              {filteredDoctors.map((doctor) => (
-                <article
-                  key={doctor.name}
-                  className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm"
-                >
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <h3 className="text-lg font-semibold">{doctor.name}</h3>
-                      <p className="text-emerald-600">{doctor.specialty}</p>
+              {filteredDoctors.length === 0 ? (
+                <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-4 text-sm text-slate-600 md:col-span-2">
+                  Ushbu mutaxassis bo‘yicha shifokorlar hozircha mavjud emas.
+                </div>
+              ) : (
+                filteredDoctors.map((doctor) => (
+                  <article
+                    key={doctor.name}
+                    className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm"
+                  >
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h3 className="text-lg font-semibold">{doctor.name}</h3>
+                        <p className="text-emerald-600">{doctor.specialty}</p>
+                      </div>
+                      <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+                        {doctor.time}
+                      </span>
                     </div>
-                    <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
-                      {doctor.time}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-slate-600">{doctor.note}</p>
-                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-                    <p className="font-semibold text-slate-800">
-                      Narxi: {doctor.fee}
-                    </p>
-                    <a
-                      href="#booking"
-                      className="rounded-full bg-slate-900 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
-                    >
-                      Band qilish
-                    </a>
-                  </div>
-                </article>
-              ))}
+                    <p className="mt-2 text-sm text-slate-600">{doctor.note}</p>
+                    <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                      <p className="font-semibold text-slate-800">
+                        Narxi: {doctor.fee}
+                      </p>
+                      <a
+                        href="#booking"
+                        className="rounded-full bg-slate-900 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
+                      >
+                        Band qilish
+                      </a>
+                    </div>
+                  </article>
+                ))
+              )}
             </div>
           </section>
 
@@ -272,31 +309,62 @@ export default function Home() {
                   bog‘lanamiz.
                 </p>
               </div>
-              <form className="grid gap-3 rounded-2xl bg-slate-50 p-4">
+              <form
+                className="grid gap-3 rounded-2xl bg-slate-50 p-4"
+                onSubmit={handleSubmit}
+              >
                 <input
                   className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
                   placeholder="Ismingiz"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
                 <input
                   className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
                   placeholder="Telefon raqamingiz"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
-                <select className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none">
-                  <option>Shifokor tanlang</option>
-                  <option>Dr. Aziza Karimova</option>
-                  <option>Dr. Bobur Ismoilov</option>
-                  <option>Dr. Nilufar Abdullayeva</option>
-                  <option>Dr. Sardor Rahimov</option>
-                  <option>Dr. Maftuna Xayrullayeva</option>
-                  <option>Dr. Jamshid Tursunov</option>
+                <select
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
+                  name="doctor"
+                  value={formData.doctor}
+                  onChange={handleChange}
+                >
+                  <option value="">Shifokor tanlang</option>
+                  <option value="Dr. Aziza Karimova">Dr. Aziza Karimova</option>
+                  <option value="Dr. Bobur Ismoilov">Dr. Bobur Ismoilov</option>
+                  <option value="Dr. Nilufar Abdullayeva">
+                    Dr. Nilufar Abdullayeva
+                  </option>
+                  <option value="Dr. Sardor Rahimov">Dr. Sardor Rahimov</option>
+                  <option value="Dr. Maftuna Xayrullayeva">
+                    Dr. Maftuna Xayrullayeva
+                  </option>
+                  <option value="Dr. Jamshid Tursunov">
+                    Dr. Jamshid Tursunov
+                  </option>
                 </select>
                 <textarea
                   className="min-h-24 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
                   placeholder="Muammo yoki shikoyatingiz"
+                  name="note"
+                  value={formData.note}
+                  onChange={handleChange}
                 />
-                <button className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700">
+                <button
+                  type="submit"
+                  className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
+                >
                   Yuborish
                 </button>
+                {submitMessage ? (
+                  <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
+                    {submitMessage}
+                  </p>
+                ) : null}
               </form>
             </div>
           </section>
