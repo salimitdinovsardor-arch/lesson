@@ -44,6 +44,27 @@ const doctors = [
     fee: "230 000 so‘m",
     note: "Bosh og‘rig‘i, asab tizimi muammolari va xavotir holatlari",
   },
+  {
+    name: "Dr. Dildora Mirzayeva",
+    specialty: "Dermatolog",
+    time: "09:00 - 13:00",
+    fee: "190 000 so‘m",
+    note: "Teri kasalliklari, allergiya, yallig‘lanish va teri muammolari",
+  },
+  {
+    name: "Dr. Bekzod Rahmonov",
+    specialty: "Stomatolog",
+    time: "10:00 - 15:00",
+    fee: "200 000 so‘m",
+    note: "Tish og‘rig‘i, stomatologik tekshiruv va profilaktika",
+  },
+  {
+    name: "Dr. Lobar Iskandarova",
+    specialty: "Endokrinolog",
+    time: "11:00 - 16:00",
+    fee: "220 000 so‘m",
+    note: "Qandli diabet, gormon muammolari va endocrine tizim tekshiruvlari",
+  },
 ];
 
 const services = [
@@ -86,6 +107,21 @@ const specialties = [
     key: "therapy",
     diseases: ["Yengil kasalliklar", "Isitma", "Qorin og‘rig‘i"],
   },
+  {
+    title: "Dermatologiya",
+    key: "dermatology",
+    diseases: ["Yallig‘lanish", "Ter kutish", "Teri kasalliklari"],
+  },
+  {
+    title: "Stomatologiya",
+    key: "dentistry",
+    diseases: ["Tish og‘rig‘i", "Tish shifoxonasi", "Stomatologik muammolar"],
+  },
+  {
+    title: "Endokrinologiya",
+    key: "endocrinology",
+    diseases: ["Qandli diabet", "Shish", "Gormon muammolari"],
+  },
 ];
 
 const specialtyMap = {
@@ -95,6 +131,9 @@ const specialtyMap = {
   gynecology: ["Ginekolog"],
   neurology: ["Nevrolog"],
   therapy: ["Terapevt"],
+  dermatology: ["Dermatolog"],
+  dentistry: ["Stomatolog"],
+  endocrinology: ["Endokrinolog"],
 };
 
 export default function Home() {
