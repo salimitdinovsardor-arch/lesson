@@ -287,6 +287,25 @@ export default function Home() {
             ))}
           </section>
 
+          <section className="grid gap-4 rounded-[32px] border border-emerald-100 bg-white/80 p-4 shadow-sm md:grid-cols-3">
+            <div className="rounded-[24px] bg-emerald-50 p-4">
+              <p className="text-2xl font-black text-emerald-700">10+</p>
+              <p className="mt-1 text-sm text-slate-600">
+                Mutaxassis shifokorlar
+              </p>
+            </div>
+            <div className="rounded-[24px] bg-sky-50 p-4">
+              <p className="text-2xl font-black text-sky-700">98%</p>
+              <p className="mt-1 text-sm text-slate-600">Mamnun mijozlar</p>
+            </div>
+            <div className="rounded-[24px] bg-violet-50 p-4">
+              <p className="text-2xl font-black text-violet-700">24/7</p>
+              <p className="mt-1 text-sm text-slate-600">
+                Tezkor yordam va maslahat
+              </p>
+            </div>
+          </section>
+
           <section
             id="doctors"
             className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]"
@@ -419,12 +438,20 @@ export default function Home() {
                   <li>• Zamonaviy texnologiyalar va aniq diagnostika</li>
                   <li>• Qulay joylashuv va qulay narxlar</li>
                 </ul>
-                <a
-                  href="#booking"
-                  className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
-                >
-                  Qabulga yozilish
-                </a>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    href="#booking"
+                    className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+                  >
+                    Qabulga yozilish
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+                  >
+                    Aloqa
+                  </a>
+                </div>
               </div>
             </div>
           </section>
@@ -561,9 +588,10 @@ export default function Home() {
                 >
                   +998 90 111 22 33
                 </a>
-                <p className="mt-4 text-sm text-slate-300">
-                  Telegram: @kilinika_clinic
-                </p>
+                <div className="mt-4 rounded-2xl border border-white/10 bg-white/10 p-3">
+                  <p className="text-sm text-slate-300">Telegram</p>
+                  <p className="mt-1 font-semibold">@kilinika_clinic</p>
+                </div>
               </div>
             </div>
           </section>
