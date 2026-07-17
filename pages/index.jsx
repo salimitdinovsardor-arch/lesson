@@ -357,7 +357,29 @@ export default function Home() {
                   ginekologiya, nevrologiya va umumiy terapiya bo‘yicha
                   mutaxassislar ishlaydi.
                 </p>
+
+                <div className="mt-5 grid gap-3 md:grid-cols-2">
+                  <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                    <h3 className="font-semibold text-slate-900">
+                      Tezkor murojat
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-600">
+                      Sizning shikoyatingizni tezkor aniqlab, eng yaxshi
+                      davolash yo‘lini taklif qilamiz.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <h3 className="font-semibold text-slate-900">
+                      Xavfsiz xizmat
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-600">
+                      Barcha tekshiruvlar va davolash usullari xavfsiz va
+                      sifatli.
+                    </p>
+                  </div>
+                </div>
               </div>
+
               <div className="rounded-[24px] bg-linear-to-br from-emerald-600 to-teal-600 p-6 text-white shadow-lg">
                 <h3 className="text-lg font-semibold">Nega bizni tanlaysiz?</h3>
                 <ul className="mt-4 space-y-3 text-sm text-emerald-50">
@@ -366,6 +388,12 @@ export default function Home() {
                   <li>• Zamonaviy texnologiyalar va aniq diagnostika</li>
                   <li>• Qulay joylashuv va qulay narxlar</li>
                 </ul>
+                <a
+                  href="#booking"
+                  className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+                >
+                  Qabulga yozilish
+                </a>
               </div>
             </div>
           </section>
@@ -391,47 +419,77 @@ export default function Home() {
                 className="grid gap-3 rounded-[24px] bg-slate-50 p-4"
                 onSubmit={handleSubmit}
               >
-                <input
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
-                  placeholder="Ismingiz"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
-                  placeholder="Telefon raqamingiz"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-                <select
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
-                  name="doctor"
-                  value={formData.doctor}
-                  onChange={handleChange}
-                >
-                  <option value="">Shifokor tanlang</option>
-                  <option value="Dr. Aziza Karimova">Dr. Aziza Karimova</option>
-                  <option value="Dr. Bobur Ismoilov">Dr. Bobur Ismoilov</option>
-                  <option value="Dr. Nilufar Abdullayeva">
-                    Dr. Nilufar Abdullayeva
-                  </option>
-                  <option value="Dr. Sardor Rahimov">Dr. Sardor Rahimov</option>
-                  <option value="Dr. Maftuna Xayrullayeva">
-                    Dr. Maftuna Xayrullayeva
-                  </option>
-                  <option value="Dr. Jamshid Tursunov">
-                    Dr. Jamshid Tursunov
-                  </option>
-                </select>
-                <textarea
-                  className="min-h-24 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
-                  placeholder="Muammo yoki shikoyatingiz"
-                  name="note"
-                  value={formData.note}
-                  onChange={handleChange}
-                />
+                <div className="rounded-2xl border border-slate-200 bg-white p-3">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Ismingiz
+                  </label>
+                  <input
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
+                    placeholder="Ismingiz"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-3">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Telefon raqamingiz
+                  </label>
+                  <input
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
+                    placeholder="Telefon raqamingiz"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-3">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Shifokor tanlang
+                  </label>
+                  <select
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
+                    name="doctor"
+                    value={formData.doctor}
+                    onChange={handleChange}
+                  >
+                    <option value="">Shifokor tanlang</option>
+                    <option value="Dr. Aziza Karimova">
+                      Dr. Aziza Karimova
+                    </option>
+                    <option value="Dr. Bobur Ismoilov">
+                      Dr. Bobur Ismoilov
+                    </option>
+                    <option value="Dr. Nilufar Abdullayeva">
+                      Dr. Nilufar Abdullayeva
+                    </option>
+                    <option value="Dr. Sardor Rahimov">
+                      Dr. Sardor Rahimov
+                    </option>
+                    <option value="Dr. Maftuna Xayrullayeva">
+                      Dr. Maftuna Xayrullayeva
+                    </option>
+                    <option value="Dr. Jamshid Tursunov">
+                      Dr. Jamshid Tursunov
+                    </option>
+                  </select>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-3">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Muammo yoki shikoyatingiz
+                  </label>
+                  <textarea
+                    className="min-h-24 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none"
+                    placeholder="Muammo yoki shikoyatingiz"
+                    name="note"
+                    value={formData.note}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <button
                   type="submit"
                   className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
