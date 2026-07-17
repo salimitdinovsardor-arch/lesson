@@ -143,22 +143,55 @@ export default function Home() {
       </Head>
 
       <main id="top" className="min-h-screen bg-slate-50 text-slate-800">
-        <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <header className="sticky top-0 z-20 border-b border-white/30 bg-white/80 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-            <a href="#top" className="text-xl font-bold text-emerald-700">
-              Klinika
+            <a href="#top" className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-linear-to-br from-emerald-500 to-teal-600 text-lg font-black text-white shadow-lg shadow-emerald-500/30">
+                +
+              </span>
+              <span className="flex flex-col">
+                <span className="text-lg font-black tracking-tight text-slate-900">
+                  Klinika
+                </span>
+                <span className="text-xs font-medium text-emerald-600">
+                  Professional tibbiy yordam
+                </span>
+              </span>
             </a>
-            <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
-              <a href="#doctors" className="transition hover:text-emerald-700">
+
+            <nav className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 p-2 shadow-sm">
+              <a
+                href="#doctors"
+                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              >
                 Shifokorlar
               </a>
-              <a href="#booking" className="transition hover:text-emerald-700">
+              <a
+                href="#booking"
+                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              >
                 Band qilish
               </a>
-              <a href="#contact" className="transition hover:text-emerald-700">
+              <a
+                href="#about"
+                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              >
+                Biz haqimizda
+              </a>
+              <a
+                href="#contact"
+                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              >
                 Aloqa
               </a>
             </nav>
+
+            <a
+              href="#booking"
+              className="hidden rounded-full bg-linear-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:shadow-xl sm:inline-flex"
+            >
+              Qabulga yozilish
+            </a>
           </div>
         </header>
 
@@ -289,6 +322,39 @@ export default function Home() {
                   </article>
                 ))
               )}
+            </div>
+          </section>
+
+          <section
+            id="about"
+            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+          >
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
+                  Klinika haqida
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold">
+                  Bizning klinika sizning salomatligingiz uchun har doim yaqin.
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Klinika zamonaviy diagnostika, tezkor tekshiruvlar va
+                  professional shifokorlar jamoasi bilan har qanday kasallikni
+                  erta aniqlash va samarali davolashga yordam beradi. Bizda
+                  bolalar salomatligi, yurak-qon tomir kasalliklari, ortopediya,
+                  ginekologiya, nevrologiya va umumiy terapiya bo‘yicha
+                  mutaxassislar ishlaydi.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-linear-to-br from-emerald-600 to-teal-600 p-6 text-white shadow-lg">
+                <h3 className="text-lg font-semibold">Nega bizni tanlaysiz?</h3>
+                <ul className="mt-4 space-y-3 text-sm text-emerald-50">
+                  <li>• 24/7 maslahat va tezkor yozilish imkoniyati</li>
+                  <li>• Ishonchli va malakali shifokorlar jamoasi</li>
+                  <li>• Zamonaviy texnologiyalar va aniq diagnostika</li>
+                  <li>• Qulay joylashuv va qulay narxlar</li>
+                </ul>
+              </div>
             </div>
           </section>
 
